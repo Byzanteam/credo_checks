@@ -1,9 +1,9 @@
-defmodule CredoChecks.MixProject do
+defmodule JetCredo.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :credo_checks,
+      app: :jet_credo,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
