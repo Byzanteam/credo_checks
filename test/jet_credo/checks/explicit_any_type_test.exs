@@ -179,4 +179,15 @@ defmodule JetCredo.Checks.NoExplicitAnyTypeTest do
     |> run_check(ExplicitAnyType)
     |> assert_issues(fn issues -> assert Enum.count(issues) == 8 end)
   end
+
+  test "it should report code that term or any does not end with ()" do
+    """
+    defmodule CredoSampleModule do
+      @type any_type() :: any
+    end
+    """
+    |> to_source_file()
+    |> run_check(ExplicitAnyType)
+    |> assert_issue()
+  end
 end

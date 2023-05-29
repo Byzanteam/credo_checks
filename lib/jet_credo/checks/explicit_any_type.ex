@@ -56,7 +56,7 @@ defmodule JetCredo.Checks.ExplicitAnyType do
     Credo.Code.prewalk(
       ast,
       fn
-        {key, meta, []} = ast, acc when key in [:any, :term] ->
+        {key, meta, args} = ast, acc when key in [:any, :term] and args in [[], nil] ->
           options = [
             message: "Explicit `#{to_string(key)}()` type found in @#{to_string(type_catalog)}",
             trigger: "#{to_string(key)}()",
